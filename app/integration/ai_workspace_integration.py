@@ -1,4 +1,3 @@
-from http import HTTPMethod
 from typing import Union, TYPE_CHECKING
 from urllib.parse import urljoin
 
@@ -12,22 +11,22 @@ class AIWorkspaceIntegration(BaseIntegration):
     def __init__(self, config: Union[Development, Production]) -> None:
         super().__init__(config.WORKSPACE_URL)
 
-    async def list_files(self, method=HTTPMethod.GET, endpoint="api/v1/files/"):
+    async def list_files(self):
         return await self._client.get(urljoin(self._base_url, "api/v1/files/"))
 
-    async def upload_file(self, value: str, method=HTTPMethod.POST, endpoint="api/v1/files/", **data):
+    async def upload_file(self, file_id: str):
         return await self._client.post(urljoin(self._base_url, "api/v1/files/"))
 
-    async def delete_file(self, value: str, method=HTTPMethod.DELETE, endpoint="api/v1/files/"): 
+    async def delete_file(self, file_id: str): 
         return await self._client.delete(urljoin(self._base_url, "api/v1/files/"))
 
-    async def list_knowledge(self, method=HTTPMethod.GET, endpoint="api/v1/knowledge/"):
+    async def list_knowledge(self):
         return await self._client.get(urljoin(self._base_url, "api/v1/files/"))
     
-    async def create_knowledge(self, method=HTTPMethod.POST, endpoint="api/v1/knowledge/", **data):
+    async def create_knowledge(self):
         return await self._client.post(urljoin(self._base_url, "api/v1/files/"))
     
-    async def add_file_to_knowledge(self, endpoint: str, method=HTTPMethod.POST, **data):
+    async def add_file_to_knowledge(self):
         return await self._client.post(urljoin(self._base_url, "api/v1/files/"))
     
 

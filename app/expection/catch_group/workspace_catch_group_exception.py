@@ -1,7 +1,7 @@
 
 
 async def workspace_exception(func):
-    async def exception():
+    async def catcher():
         return 
-    return exception
+    return catcher
 

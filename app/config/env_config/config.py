@@ -13,4 +13,3 @@ class Config:
 
     WORKSPACE_URL = getenv("WORKSPACE_URL", "")
     DONATIONS_URL = getenv("DONATIONS_URL", "")
-    CHECK_USER_URL = getenv("CHECK_USER_URL", "")
