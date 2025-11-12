@@ -1,0 +1,1 @@
+from app.integration.shared.base_integration import BaseIntegration

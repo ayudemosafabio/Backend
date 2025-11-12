@@ -1,16 +1,11 @@
-from http import HTTPMethod
-from nexilum import connect_to
+from typing import Union, TYPE_CHECKING
 
-@connect_to(
-    base_url="API_BASE",
-    headers={
-        "Authorization": f"Bearer {"API_TOKEN"}",
-        "Content-Type": "application/json"
-    },
-    timeout=30,
-    verify_ssl=True
-)
-class Check_user_integration:
+from app.integration.shared.base_integration import BaseIntegration
 
-    def check_user(self, value: str, method: HTTPMethod = HTTPMethod.GET, endpoint: str = ""):...
+if TYPE_CHECKING:
+    from app.config.env_config import Development, Production
 
+class CheckUserIntegration(BaseIntegration):
+
+    def __init__(self, config: Union[Development, Production]) -> None:
+        super().__init__(config.CHECK_USER_URL)

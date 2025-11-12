@@ -1,55 +1,34 @@
 from http import HTTPMethod
-from nexilum import connect_to
+from typing import Union, TYPE_CHECKING
+from urllib.parse import urljoin
 
-@connect_to(
-    base_url="API_BASE",
-    headers={
-        "Authorization": f"Bearer {"API_TOKEN"}",
-        "Content-Type": "application/json"
-    },
-    timeout=30,
-    verify_ssl=True
-)
-class AIWorkspaceIntegration:
+from app.integration.shared.base_integration import BaseIntegration
 
-    def list_files(self, method=HTTPMethod.GET, endpoint="api/v1/files/"): ...
-    """List all files from knowledge
-    
-    """
+if TYPE_CHECKING:
+    from app.config.env_config import Development, Production
 
-    def upload_file(self, value: str, method=HTTPMethod.POST, endpoint="api/v1/files/", **data): ...
-    """Upload a file 
-    
-    """
+class AIWorkspaceIntegration(BaseIntegration):
 
-    def delete_file(self, value: str, method=HTTPMethod.DELETE, endpoint="api/v1/files/"): ...
-    """Delete a file from knowledge
-       Args: 
-            value (str): Value is file id value
-    """
+    def __init__(self, config: Union[Development, Production]) -> None:
+        super().__init__(config.WORKSPACE_URL)
 
-    def list_knowledge(self, method=HTTPMethod.GET, endpoint="api/v1/knowledge/"): ...
-    """Delete a file from knowledge
-       Args: 
-            value (str): Value is file id value
-    """
+    async def list_files(self, method=HTTPMethod.GET, endpoint="api/v1/files/"):
+        return await self._client.get(urljoin(self._base_url, "api/v1/files/"))
+
+    async def upload_file(self, value: str, method=HTTPMethod.POST, endpoint="api/v1/files/", **data):
+        return await self._client.post(urljoin(self._base_url, "api/v1/files/"))
+
+    async def delete_file(self, value: str, method=HTTPMethod.DELETE, endpoint="api/v1/files/"): 
+        return await self._client.delete(urljoin(self._base_url, "api/v1/files/"))
+
+    async def list_knowledge(self, method=HTTPMethod.GET, endpoint="api/v1/knowledge/"):
+        return await self._client.get(urljoin(self._base_url, "api/v1/files/"))
     
-    def create_knowledge(self, method=HTTPMethod.POST, endpoint="api/v1/knowledge/", **data): ...
-    """Delete a file from knowledge
-       Args: 
-            value (str): Value is file id value
-    """
+    async def create_knowledge(self, method=HTTPMethod.POST, endpoint="api/v1/knowledge/", **data):
+        return await self._client.post(urljoin(self._base_url, "api/v1/files/"))
     
-    def add_file_to_knowledge(self, endpoint: str, method=HTTPMethod.POST, **data): ...
-    """Delete a file from knowledge
-       Args: 
-            value (str): Value is file id value
-    """
+    async def add_file_to_knowledge(self, endpoint: str, method=HTTPMethod.POST, **data):
+        return await self._client.post(urljoin(self._base_url, "api/v1/files/"))
     
-    def add_file_to_knowledge_endpoint(self, knowledge_id: str):
-        """Delete a file from knowledge
-        Args: 
-                value (str): Value is file id value
-        """
-        return f"api/v1/knowledge/{knowledge_id}/file/add"
+
     

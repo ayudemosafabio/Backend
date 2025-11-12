@@ -39,7 +39,7 @@ class UserChatService:
         await websocket.send_text("[END]")
 
     def get_chat_AI_payload(self, model: str, messages: List[Dict[str, Any]], **actions):
-        att = {"", ""}
+        att = {"files", ""}
         for action in list(actions.keys()):
             if not action in att: raise InvalidParameter(f"The parameter {action} is invalid")
 

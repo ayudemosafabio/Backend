@@ -8,6 +8,9 @@ class Config:
     DESCRIPTION = getenv("DESCRIPTION", "Una api para ayudar a encontrar una cura para Fabio Martínez")
     VERSION = getenv("VERSION", "0.1.5")
 
-
-    GOOGLE_CLIENT_SECRET = getenv("VEGOOGLE_CLIENT_SECRETSION", "")
+    GOOGLE_CLIENT_SECRET = getenv("GOOGLE_CLIENT_SECRET", "")
     GOOGLE_CLIENT_ID = getenv("GOOGLE_CLIENT_ID", "")
+
+    WORKSPACE_URL = getenv("WORKSPACE_URL", "")
+    DONATIONS_URL = getenv("DONATIONS_URL", "")
+    CHECK_USER_URL = getenv("CHECK_USER_URL", "")

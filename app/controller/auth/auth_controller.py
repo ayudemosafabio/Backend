@@ -16,8 +16,6 @@ class AuthController:
         self.__reCaptcha = ReCaptcha(
             sitekey="", 
             url="",
-            min_score=9.5,
-            action="",
         )
 
         self.__check_user = Check_user_integration()

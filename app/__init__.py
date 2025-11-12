@@ -27,11 +27,11 @@ app = FastAPI(
 setup_cors(
     app, 
     CORSType.PRIVATE_API,
-    origins=[], 
+    origins=["http://localhost:4321"], 
     allow_credentials=True,
     allow_headers=[],
     allow_origin_regex=None,
-    expose_headers=[],
+    expose_headers=["X-CSRF-Token"],
     max_age=600
 )
 
