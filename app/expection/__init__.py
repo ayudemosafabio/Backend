@@ -1,0 +1,1 @@
+from app.expection.error_exception import Error

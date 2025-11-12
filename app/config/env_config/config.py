@@ -1,0 +1,13 @@
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
+
+class Config:
+    APP_NAME = getenv("APP_NAME", "Ayudemos a Fabio")
+    DESCRIPTION = getenv("DESCRIPTION", "Una api para ayudar a encontrar una cura para Fabio Martínez")
+    VERSION = getenv("VERSION", "0.1.5")
+
+
+    GOOGLE_CLIENT_SECRET = getenv("VEGOOGLE_CLIENT_SECRETSION", "")
+    GOOGLE_CLIENT_ID = getenv("GOOGLE_CLIENT_ID", "")
