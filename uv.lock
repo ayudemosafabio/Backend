@@ -112,8 +112,8 @@ wheels = [
 
 [[package]]
 name = "authsys"
-version = "2.0.5"
-source = { path = "libs/authsys-2.0.5.tar.gz" }
+version = "2.0.6"
+source = { path = "libs/authsys-2.0.6.tar.gz" }
 dependencies = [
     { name = "aiosqlite" },
     { name = "alembic" },
@@ -169,7 +169,7 @@ dependencies = [
     { name = "urllib3" },
     { name = "werkzeug" },
 ]
-sdist = { hash = "sha256:0a0efee59c405c414f28655f06029b443633c63e10f538a3f861195f01568f23" }
+sdist = { hash = "sha256:a213970f83c7e08cccbbb148334ed24e311ec2a4b01dbdfe366231bb18346b7c" }
 
 [package.metadata]
 requires-dist = [
@@ -304,7 +304,7 @@ dependencies = [
     { name = "werkzeug" },
     { name = "wheel" },
 ]
-sdist = { hash = "sha256:bcc5827ec19f68569a9e2c2534844dc34e65ba1a4c7c6a20f813417cd17dc4fc" }
+sdist = { hash = "sha256:89ed4c1b7c1561696f9e56759792d90b2e28c651ce520d79714b83d29c96664d" }
 
 [package.metadata]
 requires-dist = [
@@ -396,7 +396,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "authsys", path = "libs/authsys-2.0.5.tar.gz" },
+    { name = "authsys", path = "libs/authsys-2.0.6.tar.gz" },
     { name = "authsysfa", path = "libs/authsysfa-2.3.2.tar.gz" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.120.4" },
     { name = "krelego", path = "libs/krelego-1.0.3.tar.gz" },

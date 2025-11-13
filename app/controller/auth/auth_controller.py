@@ -5,7 +5,6 @@ from authsysfa import AsyncAuthsysFA, InfoUser, TwoFactorData, get_a2f_values_fr
 from authlib.integrations.starlette_client import OAuth, OAuthError
 
 from app.infrastructure.user_schema import LoginSchema, UserSchema
-from app.integration.check_user_integration import Check_user_integration
 
 
 class AuthController:
@@ -18,7 +17,6 @@ class AuthController:
             url="",
         )
 
-        self.__check_user = Check_user_integration()
 
         self.__OAuth.register(
             name='google',
@@ -35,10 +33,7 @@ class AuthController:
        self.__reCaptcha.url = ""
        return await self.__authsysfa().public_create_user.register_user(
            field_name_id="user_id", ip=request.client.host, user_agent=request.headers.get("user-agent"), #type:ignore
-           get_by={"user_id", "user_name"}, schema=schema, custom_verification=Custom_verification(
-               handler=self.__check_user.check_user, args=()
-           ), 
-           reCaptcha=self.__reCaptcha
+           get_by={"user_id", "user_name"}, schema=schema, reCaptcha=self.__reCaptcha
        )
 
     async def login(self, request: Request, schema: LoginSchema):

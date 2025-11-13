@@ -29,14 +29,13 @@ class UserChatService:
 
         async with client.stream(
             "POST",
-            "OPENWEBUI_URL",
+            "api/chat/completions",
             json=payload,
-            headers={"Authorization": f"Bearer {"API_TOKEN"}"}
         ) as response:
             async for chunk in response.aiter_text():
                 await websocket.send_text(chunk)
 
-        await websocket.send_text("[END]")
+        
 
     def get_chat_AI_payload(self, model: str, messages: List[Dict[str, Any]], **actions):
         att = {"files", ""}

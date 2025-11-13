@@ -12,4 +12,6 @@ class Config:
     GOOGLE_CLIENT_ID = getenv("GOOGLE_CLIENT_ID", "")
 
     WORKSPACE_URL = getenv("WORKSPACE_URL", "")
+    WORKSPACE_KEY = getenv("WORKSPACE_KEY", "")
     DONATIONS_URL = getenv("DONATIONS_URL", "")
+    DONATIONS_KEY = getenv("DONATIONS_KEY", "")
